@@ -1,0 +1,48 @@
+﻿@page
+@model NumberShop.Pages.Admin.Parfums.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Parfum[0].nom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parfum[0].prix)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parfum[0].description)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Parfum) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.prix)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ParfumId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ParfumId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ParfumId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
