@@ -1,0 +1,36 @@
+﻿@page
+@model NumberShop.Pages.Admin.categories.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Categories[0].CategorieName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Categories) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategorieName)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.IdCategorie">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.IdCategorie">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.IdCategorie">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

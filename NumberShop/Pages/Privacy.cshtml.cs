@@ -22,7 +22,11 @@ namespace NumberShop.Pages
 
         public void OnGet()
         {
-            var parfum = new Parfum() { nom="fggghbgf", prix = 30 };
+            var categories = new Categories() { CategorieName = "Parfum"};
+            dataContext.Categories.Add(categories);
+            dataContext.SaveChanges();
+
+            var parfum = new Parfum() { nom="fdgdfgfhfnfn", prix=50 };
             dataContext.Parfums.Add(parfum);
             dataContext.SaveChanges();
         }

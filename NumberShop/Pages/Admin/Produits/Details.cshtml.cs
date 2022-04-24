@@ -8,18 +8,17 @@ using Microsoft.EntityFrameworkCore;
 using NumberShop.Data;
 using NumberShop.Models;
 
-namespace NumberShop.Pages.Admin.Parfums
+namespace NumberShop.Pages.Admin.Produits
 {
-    public class DeleteModel : PageModel
+    public class DetailsModel : PageModel
     {
         private readonly NumberShop.Data.DataContext _context;
 
-        public DeleteModel(NumberShop.Data.DataContext context)
+        public DetailsModel(NumberShop.Data.DataContext context)
         {
             _context = context;
         }
 
-        [BindProperty]
         public Parfum Parfum { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
@@ -36,24 +35,6 @@ namespace NumberShop.Pages.Admin.Parfums
                 return NotFound();
             }
             return Page();
-        }
-
-        public async Task<IActionResult> OnPostAsync(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Parfum = await _context.Parfums.FindAsync(id);
-
-            if (Parfum != null)
-            {
-                _context.Parfums.Remove(Parfum);
-                await _context.SaveChangesAsync();
-            }
-
-            return RedirectToPage("./Index");
         }
     }
 }

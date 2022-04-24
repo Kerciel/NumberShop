@@ -1,5 +1,5 @@
 ﻿@page
-@model NumberShop.Pages.Admin.Parfums.IndexModel
+@model NumberShop.Pages.Admin.Produits.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -22,6 +22,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Parfum[0].description)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Parfum[0].Categorie)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -36,6 +39,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
             </td>
             <td>
                 <a asp-page="./Edit" asp-route-id="@item.ParfumId">Edit</a> |

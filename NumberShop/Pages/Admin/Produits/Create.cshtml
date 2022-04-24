@@ -1,5 +1,5 @@
 ﻿@page
-@model NumberShop.Pages.Admin.Parfums.CreateModel
+@model NumberShop.Pages.Admin.Produits.CreateModel
 
 @{
     ViewData["Title"] = "Create";
@@ -27,6 +27,11 @@
                 <label asp-for="Parfum.description" class="control-label"></label>
                 <input asp-for="Parfum.description" class="form-control" />
                 <span asp-validation-for="Parfum.description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Parfum.Categorie" class="control-label"></label>
+                <input asp-for="Parfum.Categorie" class="form-control" />
+                <span asp-validation-for="Parfum.Categorie" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

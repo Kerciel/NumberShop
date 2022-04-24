@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using NumberShop.Data;
 using NumberShop.Models;
 
-namespace NumberShop.Pages.Admin.Parfums
+namespace NumberShop.Pages.Admin.categories
 {
     public class IndexModel : PageModel
     {
@@ -19,11 +19,11 @@ namespace NumberShop.Pages.Admin.Parfums
             _context = context;
         }
 
-        public IList<Parfum> Parfum { get;set; }
+        public IList<Categories> Categories { get;set; }
 
         public async Task OnGetAsync()
         {
-            Parfum = await _context.Parfums.ToListAsync();
+            Categories = await _context.Categories.ToListAsync();
         }
     }
 }

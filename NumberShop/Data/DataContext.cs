@@ -9,5 +9,7 @@ namespace NumberShop.Data
         {
         }
         public DbSet<Parfum> Parfums { get; set; }
+
+        public DbSet<Categories> Categories { get; set; }
     }
 }

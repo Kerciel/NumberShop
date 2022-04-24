@@ -1,13 +1,13 @@
 ﻿@page
-@model NumberShop.Pages.Admin.Parfums.EditModel
+@model NumberShop.Pages.Admin.Produits.EditModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editer";
 }
 
-<h1>Edit</h1>
+<h1>@ViewData["Title"]</h1>
 
-<h4>Parfum</h4>
+<h4>Produits</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -29,6 +29,22 @@
                 <input asp-for="Parfum.description" class="form-control" />
                 <span asp-validation-for="Parfum.description" class="text-danger"></span>
             </div>
+
+            <select  asp-for="Parfum.Categorie" class="form-group"  aria-label="multiple select example">
+                @foreach(var categorie in Model.categories)
+                {
+                    @if(Model.Parfum.Categorie == categorie.CategorieName)
+                    {
+                        <option selected  value="@categorie.CategorieName">@categorie.CategorieName</option>
+                    }
+                    else
+                    {
+                        <option   value="@categorie.CategorieName">@categorie.CategorieName</option>
+                    }
+                }   
+            </select>
+
+            <input type="file"  name="ajoutimage" id="ajoutimgproduit" />
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
             </div>

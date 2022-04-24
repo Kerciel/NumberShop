@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using NumberShop.Data;
 using NumberShop.Models;
 
-namespace NumberShop.Pages.Admin.Parfums
+namespace NumberShop.Pages.Admin.Produits
 {
     public class CreateModel : PageModel
     {

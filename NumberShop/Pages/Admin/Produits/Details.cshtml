@@ -1,5 +1,5 @@
 ﻿@page
-@model NumberShop.Pages.Admin.Parfums.DetailsModel
+@model NumberShop.Pages.Admin.Produits.DetailsModel
 
 @{
     ViewData["Title"] = "Details";
@@ -28,6 +28,12 @@
         </dt>
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Parfum.description)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Parfum.Categorie)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Parfum.Categorie)
         </dd>
     </dl>
 </div>

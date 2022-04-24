@@ -4,18 +4,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using NumberShop.Data;
 using NumberShop.Models;
 
-namespace NumberShop.Pages.Admin.Parfums
+namespace NumberShop.Pages.Admin.Produits
 {
-    public class EditModel : PageModel
+    public class DeleteModel : PageModel
     {
         private readonly NumberShop.Data.DataContext _context;
 
-        public EditModel(NumberShop.Data.DataContext context)
+        public DeleteModel(NumberShop.Data.DataContext context)
         {
             _context = context;
         }
@@ -39,39 +38,22 @@ namespace NumberShop.Pages.Admin.Parfums
             return Page();
         }
 
-        // To protect from overposting attacks, enable the specific properties you want to bind to.
-        // For more details, see https://aka.ms/RazorPagesCRUD.
-        public async Task<IActionResult> OnPostAsync()
+        public async Task<IActionResult> OnPostAsync(int? id)
         {
-            if (!ModelState.IsValid)
+            if (id == null)
             {
-                return Page();
+                return NotFound();
             }
 
-            _context.Attach(Parfum).State = EntityState.Modified;
+            Parfum = await _context.Parfums.FindAsync(id);
 
-            try
+            if (Parfum != null)
             {
+                _context.Parfums.Remove(Parfum);
                 await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!ParfumExists(Parfum.ParfumId))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
             }
 
             return RedirectToPage("./Index");
-        }
-
-        private bool ParfumExists(int id)
-        {
-            return _context.Parfums.Any(e => e.ParfumId == id);
         }
     }
 }

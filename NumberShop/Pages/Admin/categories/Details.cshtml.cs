@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using NumberShop.Data;
 using NumberShop.Models;
 
-namespace NumberShop.Pages.Admin.Parfums
+namespace NumberShop.Pages.Admin.categories
 {
     public class DetailsModel : PageModel
     {
@@ -19,7 +19,7 @@ namespace NumberShop.Pages.Admin.Parfums
             _context = context;
         }
 
-        public Parfum Parfum { get; set; }
+        public Categories Categories { get; set; }
 
         public async Task<IActionResult> OnGetAsync(int? id)
         {
@@ -28,9 +28,9 @@ namespace NumberShop.Pages.Admin.Parfums
                 return NotFound();
             }
 
-            Parfum = await _context.Parfums.FirstOrDefaultAsync(m => m.ParfumId == id);
+            Categories = await _context.Categories.FirstOrDefaultAsync(m => m.IdCategorie == id);
 
-            if (Parfum == null)
+            if (Categories == null)
             {
                 return NotFound();
             }
